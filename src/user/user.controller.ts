@@ -1,12 +1,15 @@
+import { registerUserDto } from './dto/registerUser.dto';
 import { UserService } from './user.service';
-import { Controller, Get } from '@nestjs/common';
+import { Body, Controller, Put } from '@nestjs/common';
+import { registerUser } from './dto/registerUser';
 
 @Controller('user')
 export class UserController {
   constructor(private userS: UserService) {}
 
-  @Get('all')
-  getAll() {
-    return this.userS.findAll();
+  @Put()
+  register(@Body() body: registerUserDto) {
+    let user = new registerUser(body);
+    return this.userS.register(user);
   }
 }
