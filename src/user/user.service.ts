@@ -1,3 +1,4 @@
+import { APIResponse } from './../apiResponse';
 import { registerUser } from './dto/registerUser';
 import { UserEntity } from './users.entity';
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
@@ -14,7 +15,10 @@ export class UserService {
   async register(registerUser: registerUser) {
     let user: UserEntity = await registerUser.toEntity();
     if (user) {
-      return this.userRepo.insert(user);
+      if (await this.userRepo.insert(user).catch(console.log)) {
+        return APIResponse.success();
+      }
+      return APIResponse.failed({ message: 'username already exists' });
     }
     console.error('creating user entity failed on ', registerUser);
     throw new HttpException('internal Error', HttpStatus.INTERNAL_SERVER_ERROR);
