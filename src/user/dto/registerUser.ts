@@ -18,4 +18,15 @@ export class registerUser {
     user.setRole(this.role);
     return user;
   }
+
+  validate() {
+    if (
+      [this.username, this.password, this.role].includes(undefined) ||
+      !Array.isArray(this.role)
+      // validate password for example 8 character and special character
+    ) {
+      return false;
+    }
+    return true;
+  }
 }
