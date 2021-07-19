@@ -32,6 +32,15 @@ if you don't have typeorm installed globaly then just run the command bellow
 docker-compose exec -T  mariadb mysql -h localhost -u root -proot raha < database.sql
 ```
 
+## setup environments
+
+there's a `.env.sample` file that contains necessary and secure data. you have to make a `.env` file with the same structure in production and development.
+for development setup just
+
+```bash
+mv .env.sample .env
+```
+
 ## API Documentation
 
 all api documentations and sample is available on swagger. just open `http://localhost:3000/api`
