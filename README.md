@@ -31,3 +31,7 @@ if you don't have typeorm installed globaly then just run the command bellow
 ```bash
 docker-compose exec -T  mariadb mysql -h localhost -u root -proot raha < database.sql
 ```
+
+## API Documentation
+
+all api documentations and sample is available on swagger. just open `http://localhost:3000/api`
