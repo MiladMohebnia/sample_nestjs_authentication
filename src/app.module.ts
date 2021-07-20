@@ -9,6 +9,7 @@ import { AppService } from './app.service';
 import { JwtStrategy } from './jwtStratagy';
 import { LoginController } from './login/login.controller';
 import { LoginService } from './login/login.service';
+import { TaskModule } from './task/task.module';
 import { UserModule } from './user/user.module';
 import { UserEntity } from './user/users.entity';
 
@@ -31,6 +32,7 @@ import { UserEntity } from './user/users.entity';
       secret: process.env.JWT_SECRET,
       signOptions: { expiresIn: '60m' },
     }),
+    TaskModule,
   ],
   controllers: [AppController, LoginController],
   providers: [AppService, LoginService, JwtStrategy],
