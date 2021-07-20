@@ -36,4 +36,14 @@ export class UserService {
     }
     return APIResponse.failed({ message: 'user has been deleted before' });
   }
+
+  async getByUsername(username: string): Promise<UserEntity | false> {
+    let user = await this.userRepo
+      .find({ where: { username } })
+      .catch(console.error);
+    if (!user || user.length == 0) {
+      return false;
+    }
+    return user[0];
+  }
 }
