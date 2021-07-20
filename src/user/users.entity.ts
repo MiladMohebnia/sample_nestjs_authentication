@@ -26,6 +26,9 @@ export class UserEntity {
   @Column()
   role: string;
 
+  @Column()
+  dailyLimit: number;
+
   @Column('timestamp')
   dt: Date;
 

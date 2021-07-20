@@ -9,4 +9,7 @@ export class registerUserDto {
 
   @ApiProperty({ type: [String] })
   role: string[];
+
+  @ApiProperty()
+  dailyLimit: number;
 }
