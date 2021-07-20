@@ -1,13 +1,16 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
+import { JwtModule } from '@nestjs/jwt';
+import { PassportModule } from '@nestjs/passport';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { UserModule } from './user/user.module';
-import { UserEntity } from './user/users.entity';
+import { JwtStrategy } from './jwtStratagy';
 import { LoginController } from './login/login.controller';
 import { LoginService } from './login/login.service';
+import { UserModule } from './user/user.module';
+import { UserEntity } from './user/users.entity';
 
 @Module({
   imports: [
@@ -23,8 +26,13 @@ import { LoginService } from './login/login.service';
       synchronize: true,
     }),
     UserModule,
+    PassportModule,
+    JwtModule.register({
+      secret: process.env.JWT_SECRET,
+      signOptions: { expiresIn: '60m' },
+    }),
   ],
   controllers: [AppController, LoginController],
-  providers: [AppService, LoginService],
+  providers: [AppService, LoginService, JwtStrategy],
 })
 export class AppModule {}

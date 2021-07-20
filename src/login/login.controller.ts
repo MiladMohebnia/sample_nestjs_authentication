@@ -1,11 +1,15 @@
 import {
   Body,
   Controller,
+  Get,
   HttpException,
   HttpStatus,
   Post,
+  Request,
+  UseGuards,
 } from '@nestjs/common';
-import { ApiBody } from '@nestjs/swagger';
+import { AuthGuard } from '@nestjs/passport';
+import { ApiBearerAuth, ApiBody } from '@nestjs/swagger';
 
 import { APIResponse } from '../apiResponse';
 import { Auth } from './dto/auth';
@@ -29,6 +33,16 @@ export class LoginController {
         message: "username and password doesn't match",
       });
     }
-    return APIResponse.success({ message: 'you logged in' });
+    return APIResponse.success({
+      message: 'you logged in',
+      access_token: authResult,
+    });
+  }
+
+  @Get('checkAuthData')
+  @ApiBearerAuth('JWT')
+  @UseGuards(AuthGuard('jwt'))
+  logout(@Request() req) {
+    return req.user;
   }
 }
