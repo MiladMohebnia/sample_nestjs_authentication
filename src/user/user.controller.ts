@@ -1,17 +1,18 @@
-import { registerUserDto } from './dto/registerUser.dto';
-import { UserService } from './user.service';
 import {
   Body,
   Controller,
-  Put,
+  Delete,
   HttpException,
   HttpStatus,
-  Delete,
+  Put,
 } from '@nestjs/common';
-import { registerUser } from './dto/registerUser';
 import { ApiBody } from '@nestjs/swagger';
-import { DeleteUserDto } from './dto/deleteUser.dto';
+
 import { DeleteUser } from './dto/deleteUser';
+import { DeleteUserDto } from './dto/deleteUser.dto';
+import { registerUser } from './dto/registerUser';
+import { registerUserDto } from './dto/registerUser.dto';
+import { UserService } from './user.service';
 
 @Controller('user')
 export class UserController {

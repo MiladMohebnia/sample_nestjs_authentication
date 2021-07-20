@@ -1,9 +1,10 @@
-import { UserService } from './user.service';
-import { mockRepository } from './user.moc';
-import { UserEntity } from './users.entity';
 import { Test, TestingModule } from '@nestjs/testing';
 import { getRepositoryToken } from '@nestjs/typeorm';
+
 import { UserController } from './user.controller';
+import { mockRepository } from './user.moc';
+import { UserService } from './user.service';
+import { UserEntity } from './users.entity';
 
 describe('UserController', () => {
   let controller: UserController;

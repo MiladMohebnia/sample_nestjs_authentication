@@ -1,8 +1,9 @@
-import { UserEntity } from './users.entity';
 import { Module } from '@nestjs/common';
-import { UserService } from './user.service';
-import { UserController } from './user.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
+
+import { UserController } from './user.controller';
+import { UserService } from './user.service';
+import { UserEntity } from './users.entity';
 
 @Module({
   providers: [UserService],

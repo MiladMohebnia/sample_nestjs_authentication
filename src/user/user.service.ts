@@ -1,10 +1,12 @@
+import { Repository } from 'typeorm';
+
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+
+import { APIResponse } from '../apiResponse';
 import { DeleteUserDto } from './dto/deleteUser.dto';
-import { APIResponse } from './../apiResponse';
 import { registerUser } from './dto/registerUser';
 import { UserEntity } from './users.entity';
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
-import { Repository } from 'typeorm';
-import { InjectRepository } from '@nestjs/typeorm';
 
 @Injectable()
 export class UserService {
