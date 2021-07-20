@@ -18,7 +18,7 @@ export class UserService {
   async register(registerUser: registerUser) {
     let user: UserEntity = await registerUser.toEntity();
     if (user) {
-      if (await this.userRepo.insert(user).catch(console.log)) {
+      if (await this.userRepo.insert(user).catch(console.error)) {
         return APIResponse.success();
       }
       return APIResponse.failed({ message: 'username already exists' });

@@ -50,7 +50,6 @@ export class UserEntity {
   async setPassword(password: string) {
     this.password =
       (await bcrypt.hash(password, 10).catch(console.error)) || null;
-    console.log(this.password);
   }
 
   async setRole(roleList: string[]) {
