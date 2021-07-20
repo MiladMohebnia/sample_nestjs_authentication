@@ -9,6 +9,7 @@ import { AppService } from './app.service';
 import { JwtStrategy } from './jwtStratagy';
 import { LoginController } from './login/login.controller';
 import { LoginService } from './login/login.service';
+import { RequestEntity } from './request-monitoring/requestMonitoring.entity';
 import { TaskModule } from './task/task.module';
 import { UserModule } from './user/user.module';
 import { UserEntity } from './user/users.entity';
@@ -23,7 +24,7 @@ import { UserEntity } from './user/users.entity';
       username: process.env.MARIADB_USERNAME,
       password: process.env.MARIADB_PASSWORD,
       database: process.env.MARIADB_DATABASE,
-      entities: [UserEntity],
+      entities: [UserEntity, RequestEntity],
       synchronize: true,
     }),
     UserModule,

@@ -1,3 +1,4 @@
+import { RequestMonitoringGuard } from './../request-monitoring/requestMonitoring.guard';
 import {
   BadRequestException,
   Body,
@@ -19,7 +20,7 @@ export class TaskController {
   @Post('add')
   @ApiBody({ type: AddRequest })
   @ApiBearerAuth('JWT')
-  @UseGuards(AuthGuard('jwt'), new RoleGuard(['add']))
+  @UseGuards(AuthGuard('jwt'), new RoleGuard(['add']), RequestMonitoringGuard)
   sum(@Body() body: AddRequest) {
     if (
       typeof body.numbers[0] != 'number' ||

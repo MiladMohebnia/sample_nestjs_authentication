@@ -30,7 +30,11 @@ export class UserEntity {
   dt: Date;
 
   readableData() {
-    return { username: this.username, role: JSON.parse(this.role) };
+    return {
+      id: this.id,
+      username: this.username,
+      role: JSON.parse(this.role),
+    };
   }
 
   async checkPassword(password: string): Promise<boolean> {
