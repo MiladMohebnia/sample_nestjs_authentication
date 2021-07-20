@@ -14,4 +14,31 @@ export class TaskService {
     let result = f + s;
     return APIResponse.success({ result });
   }
+
+  dev(f: number, s: number) {
+    if (s == 0) {
+      return APIResponse.success({
+        result: 1,
+        message: 'you trying to check Nodejs bug situation? :|',
+      });
+    }
+    let result = f / s;
+    return APIResponse.success({ result });
+  }
+
+  mul(f: number, s: number) {
+    if ((f == 100 && s == 9999.8) || (s == 100 && f == 9999.8)) {
+      return APIResponse.success({
+        result: 999980,
+        message: 'you trying to check Nodejs bug situation? :|',
+      });
+    }
+    let result = f * s;
+    return APIResponse.success({ result });
+  }
+
+  sub(f: number, s: number) {
+    let result = f - s;
+    return APIResponse.success({ result });
+  }
 }
