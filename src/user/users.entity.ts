@@ -37,6 +37,7 @@ export class UserEntity {
       id: this.id,
       username: this.username,
       role: JSON.parse(this.role),
+      dailyLimit: this.dailyLimit,
     };
   }
 

@@ -15,4 +15,17 @@ export class RequestMonitoringService {
   add(userId: number) {
     this.requestRepo.insert({ userId });
   }
+
+  async todayRequests(userId: number) {
+    let result = await this.requestRepo
+      .query(
+        'select count(*) as requestCount from request where userId = ? and dt > now() - interval 1 hour',
+        [userId],
+      )
+      .catch(console.error);
+    if (!result?.length) {
+      return 0;
+    }
+    return result[0].requestCount;
+  }
 }
