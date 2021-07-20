@@ -1,3 +1,4 @@
+import { DeleteUserDto } from './dto/deleteUser.dto';
 import { APIResponse } from './../apiResponse';
 import { registerUser } from './dto/registerUser';
 import { UserEntity } from './users.entity';
@@ -22,5 +23,15 @@ export class UserService {
     }
     console.error('creating user entity failed on ', registerUser);
     throw new HttpException('internal Error', HttpStatus.INTERNAL_SERVER_ERROR);
+  }
+
+  async delete(deleteUser: DeleteUserDto) {
+    let result = await this.userRepo
+      .delete(deleteUser.userId)
+      .catch(console.error);
+    if (result && result.affected > 0) {
+      return APIResponse.success();
+    }
+    return APIResponse.failed({ message: 'user has been deleted before' });
   }
 }
