@@ -44,3 +44,11 @@ mv .env.sample .env
 ## API Documentation
 
 all api documentations and sample is available on swagger. just open `http://localhost:3000/api`
+
+## Run tests
+
+to run test use the command below while the docker is up and running
+
+```bash
+docker-compose exec nest npm run test
+```
